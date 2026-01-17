@@ -99,6 +99,7 @@ unique_ptr<QueryResult> Connection::SendQuery(unique_ptr<SQLStatement> statement
 }
 
 unique_ptr<MaterializedQueryResult> Connection::Query(const string &query) {
+	printf("\n!!! [LOCAL DUCKDB MONITOR] Executing Query: %s !!!\n\n", query.c_str());
 	QueryParameters query_parameters;
 	query_parameters.output_type = QueryResultOutputType::FORCE_MATERIALIZED;
 	auto result = context->Query(query, query_parameters);
